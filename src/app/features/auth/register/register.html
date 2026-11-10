@@ -1,0 +1,82 @@
+<div class="login-card">
+  <h2>Create Account</h2>
+  <p class="subtitle">Register to manage your reminders</p>
+
+  <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+
+    <label for="username">Username</label>
+    <input
+      id="username"
+      type="text"
+      formControlName="username"
+      placeholder="Enter username"
+    />
+
+    @if (registerForm.controls.username.touched &&
+         registerForm.controls.username.hasError('required')) {
+      <small class="error">Username is required.</small>
+    }
+
+    @if (registerForm.controls.username.touched &&
+         registerForm.controls.username.hasError('minlength')) {
+      <small class="error">Username must contain at least 3 characters.</small>
+    }
+
+    <label for="mobile">Mobile Number</label>
+    <input
+      id="mobile"
+      type="tel"
+      formControlName="mobile"
+      placeholder="Enter mobile number"
+    />
+
+    @if (registerForm.controls.mobile.touched &&
+         registerForm.controls.mobile.invalid) {
+      <small class="error">Enter a valid 10-digit mobile number.</small>
+    }
+
+    <label for="password">Password</label>
+    <input
+      id="password"
+      type="password"
+      formControlName="password"
+      placeholder="Enter password"
+    />
+
+    @if (registerForm.controls.password.touched &&
+         registerForm.controls.password.hasError('required')) {
+      <small class="error">Password is required.</small>
+    }
+
+    @if (registerForm.controls.password.touched &&
+         registerForm.controls.password.hasError('minlength')) {
+      <small class="error">Password must contain at least 8 characters.</small>
+    }
+
+    <label for="confirmPassword">Confirm Password</label>
+    <input
+      id="confirmPassword"
+      type="password"
+      formControlName="confirmPassword"
+      placeholder="Confirm password"
+    />
+
+    @if (registerForm.controls.confirmPassword.touched &&
+         registerForm.controls.confirmPassword.hasError('required')) {
+      <small class="error">Confirm password is required.</small>
+    }
+
+    @if (registerForm.controls.confirmPassword.touched &&
+         registerForm.hasError('passwordMismatch')) {
+      <small class="error">Passwords do not match.</small>
+    }
+
+    <button type="submit">Register</button>
+
+  </form>
+
+  <p class="register-link">
+    Already have an account?
+    <a routerLink="/login">Login</a>
+  </p>
+</div>

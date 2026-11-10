@@ -1,0 +1,177 @@
+<section class="events-page">
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <div class="header-content">
+      <div class="header-icon">📅</div>
+
+      <div>
+        <h1>My Events</h1>
+        <p>Manage your events and never miss important dates.</p>
+      </div>
+    </div>
+
+    <a routerLink="/events/new" class="add-event-btn">
+      <span class="plus-icon">+</span>
+      Add Event
+    </a>
+  </header>
+
+  <!-- Event Summary -->
+  @if (!isLoading && !errorMessage) {
+  <div class="event-summary">
+    <div class="summary-card">
+      <span class="summary-icon">📋</span>
+      <div>
+        <strong>{{ events.length }}</strong>
+        <span>Total Events</span>
+      </div>
+    </div>
+
+    <div class="summary-message">
+      <span class="summary-dot"></span>
+      Your schedule, all in one place
+    </div>
+  </div>
+  }
+
+  <!-- Loading -->
+  @if (isLoading) {
+  <div class="state-card">
+    <div class="loading-spinner"></div>
+    <h3>Loading events</h3>
+    <p>Please wait while we fetch your events.</p>
+  </div>
+  }
+
+  <!-- Error -->
+  @else if (errorMessage) {
+  <div class="state-card error-state">
+    <div class="state-icon">⚠️</div>
+    <h3>Unable to load events</h3>
+    <p>{{ errorMessage }}</p>
+    <button class="retry-btn" (click)="loadEvents()">
+      Try Again
+    </button>
+  </div>
+  }
+
+  <!-- Empty -->
+  @else if (events.length === 0) {
+  <div class="state-card empty-state">
+    <div class="state-icon">🗓️</div>
+    <h3>No events yet</h3>
+    <p>Create your first event and start organizing your schedule.</p>
+
+    <a routerLink="/events/new" class="add-event-btn">
+      + Create Your First Event
+    </a>
+  </div>
+  }
+
+  <!-- Event Cards -->
+  @else {
+  <div class="events-section">
+
+    <div class="section-header">
+      <div>
+        <h2>All Events</h2>
+        <p>Here are your scheduled activities.</p>
+      </div>
+
+      <span class="event-count">
+        {{ events.length }} events
+      </span>
+    </div>
+
+    <div class="event-list">
+
+      @for (event of events; track event.id) {
+      <article class="event-card">
+
+        <!-- Date Block -->
+        <div class="event-date">
+          <span class="date-month">
+            {{ event.eventDate | date:'MMM' }}
+          </span>
+
+          <strong class="date-day">
+            {{ event.eventDate | date:'dd' }}
+          </strong>
+
+          <span class="date-weekday">
+            {{ event.eventDate | date:'EEE' }}
+          </span>
+        </div>
+
+        <!-- Event Information -->
+        <div class="event-content">
+
+          <div class="event-title-row">
+            <h3>{{ event.title }}</h3>
+
+            <span class="priority-badge" [class.priority-high]="event.priority === 'High'"
+              [class.priority-medium]="event.priority === 'Medium'" [class.priority-low]="event.priority === 'Low'">
+              {{ event.priority }}
+            </span>
+          </div>
+
+          <p class="event-description">
+            {{ event.description || 'No description provided' }}
+          </p>
+
+          <div class="event-meta">
+            <span class="meta-item">
+              <span>◷</span>
+              {{ event.eventTime }}
+            </span>
+
+            <span class="category-badge" [class.category-work]="event.category === 'Work'"
+              [class.category-personal]="event.category === 'Personal'"
+              [class.category-health]="event.category === 'Health'">
+              {{ event.category }}
+            </span>
+          </div>
+
+        </div>
+
+        <!-- Reminder -->
+        <div class="reminder-status">
+          <span class="reminder-icon">
+            {{ event.reminderEnabled ? '🔔' : '🔕' }}
+          </span>
+
+          <span [class.reminder-enabled]="event.reminderEnabled" [class.reminder-disabled]="!event.reminderEnabled">
+            {{ event.reminderEnabled ? 'Reminder On' : 'Reminder Off' }}
+          </span>
+        </div>
+
+        <!-- Actions -->
+        <div class="event-actions">
+
+          <a [routerLink]="['/events/edit', event.id]" class="action-btn edit-btn" title="Edit Event"
+            aria-label="Edit Event">
+            ✎
+          </a>
+
+
+          <button type="button" class="action-btn delete-btn" (click)="deleteEvent(event.id)" title="Delete Event"
+            aria-label="Delete Event">
+            ×
+          </button>
+
+        </div>
+
+      </article>
+      }
+
+    </div>
+
+    <div class="list-footer">
+      Showing {{ events.length }} event(s)
+    </div>
+
+  </div>
+  }
+
+</section>

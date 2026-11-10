@@ -1,0 +1,47 @@
+<div class="login-card">
+  <h2>Welcome Back</h2>
+  <p class="subtitle">Login to manage your reminders</p>
+
+  <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+
+    <label for="username">Username or Mobile</label>
+
+    <input
+      id="username"
+      type="text"
+      formControlName="username"
+      placeholder="Enter username or mobile"
+    />
+
+    @if (
+      loginForm.controls.username.touched &&
+      loginForm.controls.username.invalid
+    ) {
+      <small class="error">Username or mobile is required.</small>
+    }
+
+    <label for="password">Password</label>
+
+    <input
+      id="password"
+      type="password"
+      formControlName="password"
+      placeholder="Enter password"
+    />
+
+    @if (
+      loginForm.controls.password.touched &&
+      loginForm.controls.password.invalid
+    ) {
+      <small class="error">Password is required.</small>
+    }
+
+    <button type="submit">Login</button>
+
+  </form>
+
+  <p class="register-link">
+    Don't have an account?
+    <a routerLink="/register">Register</a>
+  </p>
+</div>

@@ -1,0 +1,179 @@
+<section class="event-form-page">
+
+  <div class="form-header">
+    <div>
+      <h1>{{ isEditMode ? 'Edit Event' : 'Create Event' }}</h1>
+      <p>
+        {{ isEditMode
+          ? 'Update your event details.'
+          : 'Create a reminder for an important event.' }}
+      </p>
+    </div>
+  </div>
+
+  @if (isLoadingEvent) {
+    <div class="loading-state">
+      Loading event details...
+    </div>
+  } @else {
+
+    <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+
+      <div class="form-section">
+        <h2>Event Information</h2>
+        <p class="section-description">
+          Enter the basic details of your event.
+        </p>
+
+        <div class="form-grid">
+
+          <!-- Title -->
+          <div class="form-group full-width">
+            <label for="title">Event Title <span>*</span></label>
+
+            <input
+              id="title"
+              type="text"
+              formControlName="title"
+              placeholder="e.g. Project Review Meeting"
+            />
+
+            @if (
+              eventForm.controls.title.touched &&
+              eventForm.controls.title.hasError('required')
+            ) {
+              <small>Title is required.</small>
+            }
+
+            @if (
+              eventForm.controls.title.touched &&
+              eventForm.controls.title.hasError('maxlength')
+            ) {
+              <small>Title cannot exceed 100 characters.</small>
+            }
+          </div>
+
+          <!-- Description -->
+          <div class="form-group full-width">
+            <label for="description">Description</label>
+
+            <textarea
+              id="description"
+              formControlName="description"
+              placeholder="Add some details about this event..."
+            ></textarea>
+          </div>
+
+          <!-- Date -->
+          <div class="form-group">
+            <label for="eventDate">Date <span>*</span></label>
+
+            <input
+              id="eventDate"
+              type="date"
+              formControlName="eventDate"
+            />
+
+            @if (
+              eventForm.controls.eventDate.touched &&
+              eventForm.controls.eventDate.hasError('required')
+            ) {
+              <small>Date is required.</small>
+            }
+          </div>
+
+          <!-- Time -->
+          <div class="form-group">
+            <label for="eventTime">Time <span>*</span></label>
+
+            <input
+              id="eventTime"
+              type="time"
+              formControlName="eventTime"
+            />
+
+            @if (
+              eventForm.controls.eventTime.touched &&
+              eventForm.controls.eventTime.hasError('required')
+            ) {
+              <small>Time is required.</small>
+            }
+          </div>
+
+          <!-- Category -->
+          <div class="form-group">
+            <label for="category">Category</label>
+
+            <select id="category" formControlName="category">
+              <option value="Personal">Personal</option>
+              <option value="Work">Work</option>
+              <option value="Health">Health</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <!-- Priority -->
+          <div class="form-group">
+            <label for="priority">Priority</label>
+
+            <select id="priority" formControlName="priority">
+              <option value="Low">Low</option>
+              <option value="Medium">Medium</option>
+              <option value="High">High</option>
+            </select>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Reminder Settings -->
+      <div class="reminder-section">
+        <div class="reminder-info">
+          <strong>Enable Reminder</strong>
+          <p>Receive a reminder for this event.</p>
+        </div>
+
+        <label class="switch">
+          <input
+            type="checkbox"
+            formControlName="reminderEnabled"
+          />
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      @if (errorMessage) {
+        <div class="error-message">
+          {{ errorMessage }}
+        </div>
+      }
+
+      <!-- Actions -->
+      <div class="form-actions">
+
+        <button
+          type="button"
+          class="btn-secondary"
+          (click)="onCancel()"
+        >
+          Cancel
+        </button>
+
+        <button
+          type="submit"
+          class="btn-primary"
+          [disabled]="isSubmitting || isLoadingEvent"
+        >
+          {{
+            isSubmitting
+              ? (isEditMode ? 'Updating...' : 'Creating...')
+              : (isEditMode ? 'Update Event' : 'Create Event')
+          }}
+        </button>
+
+      </div>
+
+    </form>
+  }
+
+</section>

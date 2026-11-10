@@ -1,0 +1,269 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  font-family: Inter, "Segoe UI", sans-serif;
+  color: #26332c;
+}
+
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+  background: #fff;
+  width: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-right: 1px solid #e2eae4;
+  padding: 28px 18px 18px;
+  position: fixed;
+  inset: 0 auto 0 0;
+  z-index: 20;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 20px;
+  font-weight: 750;
+  padding: 0 10px 35px;
+}
+
+.brand-icon {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  background: #2f6b4f;
+  color: white;
+  border-radius: 11px;
+  font-size: 21px;
+}
+
+.brand-highlight {
+  color: #2f6b4f;
+}
+
+.nav-section {
+  margin-bottom: 28px;
+}
+
+.nav-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.1px;
+  color: #93a198;
+  padding: 0 12px 12px;
+}
+
+.nav-section a {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 12px;
+  margin-bottom: 5px;
+  text-decoration: none;
+  color: #68776d;
+  border-radius: 9px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.nav-section a:hover {
+  background: #f2f7f3;
+  color: #2f6b4f;
+}
+
+.nav-section a.active {
+  background: #e8f2ec;
+  color: #2f6b4f;
+  font-weight: 650;
+}
+
+.nav-icon {
+  width: 22px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.sidebar-bottom {
+  margin-top: auto;
+  border-top: 1px solid #e9eee9;
+  padding-top: 18px;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+}
+
+.avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #e8f2ec;
+  color: #2f6b4f;
+  font-weight: 700;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.user-info strong {
+  font-size: 13px;
+}
+
+.user-info small {
+  color: #8a968e;
+  font-size: 12px;
+}
+
+.logout-button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px;
+  border: 0;
+  background: transparent;
+  color: #68776d;
+  cursor: pointer;
+  border-radius: 9px;
+  text-align: left;
+}
+
+.logout-button:hover {
+  background: #fff1f1;
+  color: #c94a4a;
+}
+
+.main-area {
+  width: 100vh;
+  inset: 0,0,0,0;
+ }
+
+.topbar {
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 35px;
+  background: #fff;
+  border-bottom: 1px solid #e2eae4;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.topbar-title {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-weight: 650;
+}
+
+.topbar-title small {
+  font-size: 12px;
+  color: #93a198;
+  font-weight: 400;
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #68776d;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background: #45a66b;
+  border-radius: 50%;
+}
+
+.page-content {
+  padding: 35px;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.menu-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #2f6b4f;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.menu-toggle:hover {
+  background: #e8f2ec;
+}
+
+.sidebar-backdrop {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 250px;
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+  }
+
+  .sidebar.sidebar-open {
+    transform: translateX(0);
+  }
+
+  .app-shell.sidebar-collapsed .sidebar {
+    transform: translateX(-100%);
+    
+  }
+
+  .main-area {
+    margin-left: 0;
+  }
+
+  .sidebar-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: #0005;
+    z-index: 15;
+  }
+
+  .topbar {
+    padding: 0 18px;
+    gap: 15px;
+  }
+
+  .topbar-right {
+    display: none;
+  }
+
+  .page-content {
+    padding: 20px 15px;
+  }
+}
