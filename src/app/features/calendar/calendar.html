@@ -1,1 +1,233 @@
-<p>calendar works!</p>
+
+
+<section class="calendar-page">
+
+
+  <!-- Header -->
+  <div class="calendar-header">
+
+
+    <div>
+      <h1>Calendar</h1>
+      <p>Manage and track your upcoming events.</p>
+    </div>
+
+
+    <button class="create-button" (click)="createEvent()">
+      + Create Event
+    </button>
+
+
+  </div>
+
+
+  <!-- Calendar Card -->
+  <div class="calendar-card">
+
+
+    <!-- Month Navigation -->
+    <div class="month-toolbar">
+
+
+      <div class="month-title">
+        {{ monthTitle }}
+      </div>
+
+
+      <div class="month-actions">
+
+
+        <button (click)="goToToday()">Today</button>
+
+
+        <button
+          class="navigation-button"
+          (click)="previousMonth()"
+          aria-label="Previous month"
+        >
+          ‹
+        </button>
+
+
+        <button
+          class="navigation-button"
+          (click)="nextMonth()"
+          aria-label="Next month"
+        >
+          ›
+        </button>
+
+
+      </div>
+
+
+    </div>
+
+
+    @if (isLoading) {
+      <div class="loading-state">
+        Loading calendar...
+      </div>
+    } @else if (errorMessage) {
+      <div class="error-message">
+        {{ errorMessage }}
+      </div>
+    } @else {
+
+
+      <!-- Weekday Headers -->
+      <div class="calendar-grid weekday-grid">
+        @for (weekday of ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']; track weekday) {
+          <div class="weekday">
+            {{ weekday }}
+          </div>
+        }
+      </div>
+
+
+      <!-- Calendar Dates -->
+      <div class="calendar-grid date-grid">
+
+
+        @for (day of calendarDays; track day.dateKey) {
+
+
+          <div
+            class="calendar-day"
+            [class.other-month]="!day.isCurrentMonth"
+            [class.today]="day.isToday"
+            [class.selected]="day.dateKey === selectedDate"
+            (click)="selectDate(day)"
+          >
+
+
+            <span class="day-number">
+              {{ day.dayNumber }}
+            </span>
+
+
+            <div class="day-events">
+
+
+              @for (event of day.events.slice(0, 2); track event.id) {
+
+
+                <button
+                  class="calendar-event"
+                  [class.high-priority]="event.priority === 'High'"
+                  [class.medium-priority]="event.priority === 'Medium'"
+                  [class.low-priority]="event.priority === 'Low'"
+                  (click)="editEvent(event.id); $event.stopPropagation()"
+                  [title]="event.title"
+                >
+                  {{ event.title }}
+                </button>
+
+
+              }
+
+
+              @if (day.events.length > 2) {
+                <span class="more-events">
+                  +{{ day.events.length - 2 }} more
+                </span>
+              }
+
+
+            </div>
+
+
+          </div>
+
+
+        }
+
+
+      </div>
+
+
+    }
+
+
+  </div>
+
+
+  <!-- Selected Date Events -->
+  <section class="selected-events-section">
+
+
+    <div class="selected-events-header">
+      <h2>
+        Events on
+        {{ selectedDate | date:'MMMM d, y' }}
+      </h2>
+
+
+      <span>{{ selectedEvents.length }} events</span>
+    </div>
+
+
+    @if (selectedEvents.length === 0) {
+
+
+      <div class="empty-state">
+        <p>No events scheduled for this date.</p>
+
+
+        <button (click)="createEvent()">
+          Create Event
+        </button>
+      </div>
+
+
+    } @else {
+
+
+      <div class="selected-events-list">
+
+
+        @for (event of selectedEvents; track event.id) {
+
+
+          <div
+            class="selected-event-card"
+            (click)="editEvent(event.id)"
+          >
+
+
+            <div class="event-time">
+              {{ event.eventTime | slice:0:5 }}
+            </div>
+
+
+            <div class="event-details">
+              <strong>{{ event.title }}</strong>
+
+
+              <p>
+                {{ event.category }} · {{ event.priority }} Priority
+              </p>
+            </div>
+
+
+            <span class="event-arrow">›</span>
+
+
+          </div>
+
+
+        }
+
+
+      </div>
+
+
+    }
+
+
+  </section>
+
+
+</section>
+
+
