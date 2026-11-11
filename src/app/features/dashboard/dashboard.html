@@ -14,42 +14,42 @@
   </section>
 
   <!-- Statistics -->
-  <section class="stats-grid">
+  <section  class="stats-grid">
 
-    <div class="stat-card">
+    <app-dashboard-stat-card>
       <div class="stat-icon green">▤</div>
       <span>Total Events</span>
       <h2>{{ totalCount }}</h2>
       <small>All your events</small>
-    </div>
+    </app-dashboard-stat-card>
 
-    <div class="stat-card">
+    <app-dashboard-stat-card>
       <div class="stat-icon blue">◷</div>
       <span>Today's Events</span>
       <h2>{{ todayCount }}</h2>
       <small>Scheduled for today</small>
-    </div>
+    </app-dashboard-stat-card>
 
-    <div class="stat-card">
+    <app-dashboard-stat-card>
       <div class="stat-icon orange">◉</div>
       <span>Upcoming</span>
       <h2>{{ upcomingCount }}</h2>
       <small>Future events</small>
-    </div>
+    </app-dashboard-stat-card>
 
-    <div class="stat-card">
+    <app-dashboard-stat-card>
       <div class="stat-icon purple">✓</div>
       <span>Past Events</span>
       <h2>{{ completedCount }}</h2>
       <small>Previous events</small>
-    </div>
+    </app-dashboard-stat-card>
 
   </section>
 
   <!-- Upcoming Events -->
   <section class="events-panel">
 
-    <div class="panel-header">
+    <div  class="panel-header">
       <div>
         <h2>Upcoming Events</h2>
         <p>Your next scheduled activities</p>

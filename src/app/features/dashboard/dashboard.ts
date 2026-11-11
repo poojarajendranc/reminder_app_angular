@@ -4,10 +4,12 @@ import { RouterLink } from '@angular/router';
 
 import { EventService } from '../../core/services/event.service';
 import { Event } from '../../core/models/event.model';
+import { StatCardHover } from '../../shared/directives/stat-card-hover';
+import { DashboardStatCard } from '../../shared/components/dashboard-stat-card/dashboard-stat-card';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [DatePipe, RouterLink],
+  imports: [DatePipe, RouterLink,DashboardStatCard, StatCardHover],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss'
 })
