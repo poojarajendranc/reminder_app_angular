@@ -9,12 +9,12 @@ import { StatCardTitle } from '../../directives/stat-card-title';
   styleUrl: './dashboard-stat-card.scss',
   templateUrl: './dashboard-stat-card.html',
 })
-export class DashboardStatCard {}
-// export class DashboardStatCard implements AfterContentInit {
-//   @ContentChild(StatCardTitle, {read:ElementRef})
-//   titleELement!:ElementRef<HTMLElement>;
+// export class DashboardStatCard {}
+export class DashboardStatCard implements AfterContentInit {
+  @ContentChild(StatCardTitle, {read:ElementRef})
+  titleELement!:ElementRef<HTMLElement>;
 
-//   ngAfterContentInit(): void {
-//     console.log('Card title:',this.titleELement.nativeElement.textContent)
-//   }
-// }
+  ngAfterContentInit(): void {
+    console.log('Card title:',this.titleELement?.nativeElement?.textContent)
+  }
+}
