@@ -22,6 +22,18 @@
                 <p>🏠 Other Events</p>
                 }
                 }
+                <p>Internationalization</p>
+                <div>
+                    {
+                    event.category,
+                    select,
+                    Personal {🏠 Personal Event}
+                    Work {🏠 Work Event}
+                    Health {🏠 Health Event}
+
+                    }
+                </div>
+
                 <p>
                     Reminder:
                     {{ event.isReminderEnabled ? 'Enabled' : 'Disabled' }}

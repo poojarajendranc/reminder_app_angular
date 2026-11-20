@@ -5,16 +5,23 @@ import { RouterLink } from '@angular/router';
 import { EventService } from '../../core/services/event.service';
 import { Event } from '../../core/models/event.model';
 import { DashboardStatCard } from '../../shared/components/dashboard-stat-card/dashboard-stat-card';
+import { TranslatePipe } from '@ngx-translate/core';
+
+import {
+  LanguageService,
+  AppLanguage
+} from '../../core/services/language.service';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [DatePipe, RouterLink,DashboardStatCard],
+  imports: [DatePipe, RouterLink, DashboardStatCard, TranslatePipe],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss'
 })
 export class Dashboard implements OnInit {
   private eventService = inject(EventService);
   private cdr = inject(ChangeDetectorRef);
+  readonly languageService = inject(LanguageService);
 
   events: Event[] = [];
   isLoading = true;
@@ -27,6 +34,14 @@ export class Dashboard implements OnInit {
   ngOnInit() {
     this.loadDashboard();
   }
+
+ onLanguageChange(language: string): void {
+  if (language === 'en' || language === 'fr') {
+    this.languageService.changeLanguage(language);
+  }
+}
+
+
 
   loadDashboard() {
     this.isLoading = true;

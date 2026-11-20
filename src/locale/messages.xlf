@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="8842630672048832724" datatype="html">
+        <source>Stay on top of your schedule and never miss an important moment.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/dashboard/dashboard.html</context>
+          <context context-type="linenumber">8,9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="frEvents" datatype="html">
+        <source>Past Events</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/dashboard/dashboard.html</context>
+          <context context-type="linenumber">42,43</context>
+        </context-group>
+        <note priority="1" from="description">Former events. </note>
+      </trans-unit>
+      <trans-unit id="5893656377760755101" datatype="html">
+        <source> <x id="ICU" equiv-text="{events, plural, =0 {No events yet} =1 {One event available}
+    other {A total of {{events.length}} events are available}}" xid="7245220590709637843"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/events/event-list/event-list.html</context>
+          <context context-type="linenumber">177,180</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8478795079105898855" datatype="html">
+        <source>{VAR_PLURAL, plural, =0 {No events yet} =1 {One event available} other {A total of <x id="INTERPOLATION"/> events are available}}</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/events/event-list/event-list.html</context>
+          <context context-type="linenumber">177,180</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3453484325624736560" datatype="html">
+        <source><x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;nav-icon&quot;&gt;"/>↪<x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/> Logout </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layouts/main-layout/main-layout.html</context>
+          <context context-type="linenumber">56,58</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

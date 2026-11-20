@@ -34,7 +34,10 @@ export class AuthService {
     ): Observable<ApiResponse<AuthResponse>> {
         return this.http.post<ApiResponse<AuthResponse>>(
             `${this.apiUrl}/login`,
-            request
+            request,
+            {
+                withCredentials: true
+            }
         );
     }
 

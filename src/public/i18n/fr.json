@@ -1,0 +1,17 @@
+{
+  "COMMON": {
+    "LANGUAGE": "Langue",
+    "LOGOUT": "Déconnexion",
+    "SAVE": "Enregistrer",
+    "CANCEL": "Annuler"
+  },
+  "DASHBOARD": {
+    "TITLE": "Tableau de bord",
+    "WELCOME": "Bon retour !",
+    "TOTAL_EVENTS": "Nombre total d'événements",
+    "TODAY_EVENTS": "Événements d'aujourd'hui",
+    "UPCOMING_EVENTS": "Événements à venir",
+    "PAST_EVENTS": "Événements passés",
+    "NO_EVENTS": "Aucun événement disponible."
+  }
+}

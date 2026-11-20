@@ -39,7 +39,10 @@
             },
             "ssr": {
               "entry": "src/server.ts"
-            }
+            },
+            "polyfills": [
+              "@angular/localize/init"
+            ]
           },
           "configurations": {
             "production": {
@@ -61,6 +64,14 @@
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true
+            },
+            "fr": {
+              "localize": [
+                "fr"
+              ],
+              "aot": true,
+              "outputPath": "dist/fr",
+              "i18nMissingTranslation": "ignore"
             }
           },
           "defaultConfiguration": "production"
@@ -70,6 +81,9 @@
           "configurations": {
             "production": {
               "buildTarget": "reminder-app:build:production"
+            },
+            "fr": {
+              "buildTarget": "reminder-app:build:fr"
             },
             "development": {
               "buildTarget": "reminder-app:build:development"

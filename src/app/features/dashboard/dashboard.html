@@ -1,4 +1,24 @@
 <div class="dashboard">
+  <div class="language-selector">
+
+    <label for="languageSelect">
+      {{ 'COMMON.LANGUAGE' | translate }}
+    </label>
+
+    <select #languageSelect id="languageSelect" [value]="languageService.currentLanguage()"
+      (change)="onLanguageChange(languageSelect.value)">
+      @for (
+      language of languageService.languages;
+      track language.code
+      ) {
+      <option [value]="language.code">
+        {{ language.label }}
+      </option>
+      }
+    </select>
+
+  </div>
+
 
   <!-- Welcome -->
   <section class="welcome-banner">
@@ -14,7 +34,7 @@
   </section>
 
   <!-- Statistics -->
-  <section  class="stats-grid">
+  <section class="stats-grid">
 
     <app-dashboard-stat-card>
       <div class="stat-icon green">▤</div>
@@ -49,7 +69,7 @@
   <!-- Upcoming Events -->
   <section class="events-panel">
 
-    <div  class="panel-header">
+    <div class="panel-header">
       <div>
         <h2>Upcoming Events</h2>
         <p>Your next scheduled activities</p>
@@ -59,49 +79,47 @@
     </div>
 
     @if (isLoading) {
-      <div class="empty-state">Loading events...</div>
+    <div class="empty-state">Loading events...</div>
     }
     @else if (upcomingEvents.length === 0) {
-      <div class="empty-state">
-        <div class="empty-icon">📅</div>
-        <h3>No upcoming events</h3>
-        <p>Create an event to get started.</p>
-        <a routerLink="/events/new" class="primary-button">
-          Create your first event
-        </a>
-      </div>
+    <div class="empty-state">
+      <div class="empty-icon">📅</div>
+      <h3>No upcoming events</h3>
+      <p>Create an event to get started.</p>
+      <a routerLink="/events/new" class="primary-button">
+        Create your first event
+      </a>
+    </div>
     }
     @else {
-      <div class="event-list">
+    <div class="event-list">
 
-        @for (event of upcomingEvents; track event.id) {
-          <div class="event-row">
+      @for (event of upcomingEvents; track event.id) {
+      <div class="event-row">
 
-            <div class="event-date">
-              <strong>{{ event.eventDate | date:'dd' }}</strong>
-              <span>{{ event.eventDate | date:'MMM' }}</span>
-            </div>
+        <div class="event-date">
+          <strong>{{ event.eventDate | date:'dd' }}</strong>
+          <span>{{ event.eventDate | date:'MMM' }}</span>
+        </div>
 
-            <div class="event-details">
-              <h3>{{ event.title }}</h3>
-              <p>
-                {{ event.eventTime }}
-                <span class="separator">•</span>
-                {{ event.category }}
-              </p>
-            </div>
+        <div class="event-details">
+          <h3>{{ event.title }}</h3>
+          <p>
+            {{ event.eventTime }}
+            <span class="separator">•</span>
+            {{ event.category }}
+          </p>
+        </div>
 
-            <span class="priority"
-              [class.high]="event.priority === 'High'"
-              [class.medium]="event.priority === 'Medium'"
-              [class.low]="event.priority === 'Low'">
-              {{ event.priority }}
-            </span>
-
-          </div>
-        }
+        <span class="priority" [class.high]="event.priority === 'High'" [class.medium]="event.priority === 'Medium'"
+          [class.low]="event.priority === 'Low'">
+          {{ event.priority }}
+        </span>
 
       </div>
+      }
+
+    </div>
     }
 
   </section>

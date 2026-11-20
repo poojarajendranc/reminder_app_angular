@@ -52,9 +52,10 @@
         </div>
       </div>
 
-      <button class="logout-button" (click)="onLogout()">
+      <button class="logout-button" (click)="onLogout()" i18n>
         <span class="nav-icon">↪</span>
-        Logout
+         {{ 'COMMON.LOGOUT' | translate }}
+
       </button>
     </div>
 
