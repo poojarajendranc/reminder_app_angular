@@ -25,12 +25,12 @@
 
       <a routerLink="/events" routerLinkActive="active" (click)="closeSidebar()">
         <span class="nav-icon">▤</span>
-        My Events
+        {{ "MYEVENTS.TITLE" | translate }}
       </a>
 
       <a routerLink="/calendar" routerLinkActive="active" (click)="closeSidebar()">
         <span class="nav-icon">▦</span>
-        Calendar
+        {{ "CALENDAR.TITLE" | translate }}
       </a>
     </div>
 
@@ -39,7 +39,7 @@
 
       <a routerLink="/settings" routerLinkActive="active" (click)="closeSidebar()">
         <span class="nav-icon">⚙</span>
-        Settings
+         {{ "SETTINGS.TITLE" | translate }}
       </a>
     </div>
 

@@ -1,0 +1,36 @@
+{
+  "COMMON": {
+    "LANGUAGE": "Language",
+    "LOGOUT": "Logout",
+    "SAVE": "Save",
+    "CANCEL": "Cancel",
+    "WORKSPACE" : "Workspace",
+    "PREFERENCES":"Preferences",
+    "MYACCOUNT" :"My Account",
+    "STAY_ORG" :"Stay organized. Never forget.",
+    "VIEW_ALL":"View All"
+  },
+  "DASHBOARD": {
+    "TITLE": "Dashboard",
+    "WELCOME": "Welcome back!",
+    "TOTAL_EVENTS": "Total Events",
+    "TODAY_EVENTS": "Today's Events",
+    "UPCOMING_EVENTS": "Upcoming Events",
+    "PAST_EVENTS": "Past Events",
+    "NO_EVENTS": "No events available.",
+    "NEXT_ACT":"Your next scheduled activities"
+  },
+  "MYEVENTS": {
+    "TITLE": "My Events",
+    "CREATE_EVENT_TXT":"Create an Event to get started",
+    "NO_UP_EVENTS":"No upcoming events",
+    "EVENTS_WAIT":"Please wait while we are fetching your events",
+    "LOADING_EVENT":"Loading Events"
+  },
+  "CALENDAR": {
+    "TITLE": "Calendar"
+  },
+  "SETTINGS":{
+    "TITLE":"Settings"
+  }
+}

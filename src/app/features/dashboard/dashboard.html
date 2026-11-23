@@ -71,8 +71,8 @@
 
     <div class="panel-header">
       <div>
-        <h2>Upcoming Events</h2>
-        <p>Your next scheduled activities</p>
+        <h2>{{" DASHBOARD.UPCOMING_EVENTS " | translate}}</h2>
+        <p>{{ "DASHBOARD.NEXT_ACT" | translate}}</p>
       </div>
 
       <a routerLink="/events" class="view-all">View all →</a>
@@ -84,10 +84,10 @@
     @else if (upcomingEvents.length === 0) {
     <div class="empty-state">
       <div class="empty-icon">📅</div>
-      <h3>No upcoming events</h3>
+      <h3> {{"MYEVENTS.NO_UP_EVENTS"|translate}}</h3>
       <p>Create an event to get started.</p>
       <a routerLink="/events/new" class="primary-button">
-        Create your first event
+       {{"MYEVENTS.CREATE_EVENT_TXT"|translate}}
       </a>
     </div>
     }
